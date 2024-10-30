@@ -18,10 +18,6 @@
 	padding: 0;
 }
 
-/* .nav__items {
-  display: inherit;
-  align-items: normal;
-} */
 .nav__item {
 	margin-left: 2rem;
 	color: #fff;
@@ -43,9 +39,6 @@
 		height: 7rem;
 	}
 
-	/* .nav__items {
-    align-items: center;
-  } */
 }
 
 .sticky {

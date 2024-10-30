@@ -20,7 +20,6 @@ function Header() {
     //  console.log(banner);
 
     const oprCallback = function (entries) {
-      // console.log(entries);
       const [entry] = entries;
       // console.log(entry);
       // console.log(entry.isIntersecting);
