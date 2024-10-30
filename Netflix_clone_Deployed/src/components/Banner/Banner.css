@@ -1,0 +1,24 @@
+.banner {
+	height: 70vh;
+	object-fit: contain;
+	position: relative;
+}
+
+.banner__content {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding-left: 2rem;
+}
+
+.banner__title {
+	font-size: 4rem;
+}
+
+.banner__dec {
+	width: 500px;
+}
+
+.button {
+	padding: 1.5rem 3rem;
+}
