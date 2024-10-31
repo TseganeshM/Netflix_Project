@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "../Row/Row";
-import requests from "../../../Utility/requests";
+import Row from "../Rows/Row";
+import requests from "../../Utility/requests";
 
 function RowList() {
   return (

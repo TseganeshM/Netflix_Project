@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Row.css";
-import axios from "../../../Utility/axios";
+import axios from "../../Utility/axios";
 import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
 
 function Row({ title, fetchUrl, isLargeRow }) {
-  const [movies, setMovies] = useState([]); //Stores the list of movies fetched from the API.
-  const [trailerUrl, setTrailerUrl] = useState(""); //Stores the YouTube trailer URL
-
+  const [movies, setMovies] = useState([]); //Stores list of movies fetched from the API.
+  const [trailerUrl, setTrailerUrl] = useState(""); //Stores URL of  YouTube trailer
   const [selectedMovie, setSelectedMovie] = useState(null); //movie clicked by the user to show in the modal.
   const [modalVisible, setModalVisible] = useState(false); // Tracks the modal window is visible or not.
   const [trailerAvailable, setTrailerAvailable] = useState(true); //  Tracks  trailer is available for the selected movie.
@@ -43,7 +42,6 @@ function Row({ title, fetchUrl, isLargeRow }) {
   }, [fetchUrl]); //exuted when the fetchUrl changes
 
   const handlePosterClick = (movie) => {
-    console.log(movie);
     setSelectedMovie(movie);
     setModalVisible(true); // Open the modal
     setTrailerUrl("");
@@ -55,13 +53,13 @@ function Row({ title, fetchUrl, isLargeRow }) {
       selectedMovie?.title ||
         selectedMovie?.name ||
         selectedMovie?.original_name
-    ) //call a third-party package movie-trailer,  to find a YouTube trailer URL.
+    ) //call a package movie-trailer,  to find a YouTube trailer URL.
       .then((url) => {
-        console.log(url);
+        //console.log(url);
         const urlParams = new URLSearchParams(new URL(url).search);
-        console.log(urlParams);
+        //console.log(urlParams);
         setTrailerUrl(urlParams.get("v"));
-        console.log(urlParams.get("v"));
+        //console.log(urlParams.get("v"));
         setTrailerAvailable(true); // Trailer is available
       })
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./Headerr.css";
+import "./Header.css";
 import NetflixLogo from "../../assets/img/NetflixLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -57,7 +57,7 @@ function Header() {
         <div className="header_right">
           <ul>
             <li>
-              <SearchIcon Size={35} />
+              <SearchIcon />
             </li>
             <li>
               <NotificationsNoneIcon />
