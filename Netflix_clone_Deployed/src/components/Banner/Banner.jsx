@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../Utility/axios";
 import requests from "../../Utility/requests";
-import "./Banner.css";
+import "./banner.css";
 
 function Banner() {
   const [movie, setMovie] = useState({});
@@ -21,7 +21,7 @@ function Banner() {
       }
     })();
   }, []);
-  console.log(movie);
+  //console.log(movie);
 
   function truncate(str, num) {
     return str?.length > num ? str.slice(0, num - 1) + "...." : str;
@@ -39,7 +39,9 @@ function Banner() {
         }}
       >
         <div className="banner__content">
-          <h2 className="banner__title">{movie?.name}</h2>
+          <h2 className="banner__title">
+            {movie?.title || movie?.name || movie?.original_name}
+          </h2>
           <p className="banner__dec">{truncate(movie?.overview, 150)}</p>
           <button className="button btn bg-light">Play</button>
           <button className="button btn bg-dark text-light ms-4">MyList</button>

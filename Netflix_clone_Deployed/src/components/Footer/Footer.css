@@ -13,12 +13,32 @@
 
 .footer {
 	color: #a3a3a3;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.footer_icons {
+	width: 12%;
+	display: flex;
+	margin-left: 20px;
+	color: #fff;
+}
+
+.footer_icons svg {
+	font-size: 30px;
+	cursor: pointer;
+	transition: transform 0.3s, color 0.3s;
+}
+
+.footer_icons svg:hover {
+	transform: scale(1.2);
+	color: #FFBD39;
 }
 
 .footer__content {
 	font-size: 1.4rem;
 	font-weight: 500;
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 
 .footer__content a {
@@ -32,4 +52,5 @@
 .footer__ask a {
 	border-bottom: 0.2rem solid #a3a3a3;
 	font-weight: 600;
+	margin-left: 20px;
 }

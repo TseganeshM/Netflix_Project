@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-
 import logo from "../../assets/img/logo.png";
 import userProfile from "../../assets/img/user.png";
-import "./Header.css";
+import "./header.css";
 
 function Header() {
   const [isHide, setIsHide] = useState(false);

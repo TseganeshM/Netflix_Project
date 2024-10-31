@@ -1,84 +1,78 @@
-import React from "react";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import React, { useEffect, useState, useRef } from "react";
+import "./Header2.css";
+import NetflixLogo from "../../assets/img/NetflixLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Offcanvas from "react-bootstrap/Offcanvas";
+function Header2() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef(null);
 
-import logo from "../../assets/img/logo.png";
-import userProfile from "../../assets/img/user.png";
-import "./Header.css";
+  useEffect(() => {
+    const handleScroll = () => {
+      const headerHeight = headerRef.current
+        ? headerRef.current.offsetHeight
+        : 0;
+      setIsScrolled(window.scrollY > headerHeight);
+    };
 
-const Header2 = () => {
-  const banner = document.querySelector(".banner");
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  console.log(banner);
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
-    <>
-      <header>
-        {/*<Navbar expand="lg" className={`nav${isHide ? " sticky" : ""}`}>*/}
-        <Navbar expand="lg" className="sticky">
-          <Container fluid>
-            <Navbar.Brand href="#">
-              <img src={logo} alt="netflix logo" className="nav__logo" />
-            </Navbar.Brand>
-            <Navbar.Toggle
-              aria-controls={`offcanvasNavbar-expand-lg`}
-              data-bs-toggle="button"
-              className="btn"
-            />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-lg`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-              placement="start"
-              className="offcanvas__bg offcanvas-start text-center fs-3"
-            >
-              <Offcanvas.Header closeButton></Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="#action1" className="nav__item">
-                    Home
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    TvShows
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    Movies
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    Latest
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    MyList
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    Browse by Language
-                  </Nav.Link>
-                </Nav>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1" className="nav__item">
-                    <SearchIcon className="icon" />
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    <NotificationsNoneIcon className="icon" />
-                  </Nav.Link>
-                  <Nav.Link href="#action2" className="nav__item">
-                    <img
-                      src={userProfile}
-                      className="user"
-                      alt="user Profile"
-                    />
-                  </Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      </header>
-    </>
+    <div
+      ref={headerRef}
+      className={`header_outer_container ${isScrolled ? "nav__black" : ""}`}
+    >
+      <div className="header_container">
+        <div className="header_left">
+          <img src={NetflixLogo} alt="Netflix Logo" width="100" />
+        </div>
+
+        <div className={`header_links ${isMenuOpen ? "mobile_menu_open" : ""}`}>
+          <ul>
+            <li>Home</li>
+            <li>TV Shows</li>
+            <li>Movies</li>
+            <li>Latest</li>
+            <li>MyList</li>
+            <li>Browse by Languages</li>
+          </ul>
+        </div>
+
+        <button className="menu_icon" onClick={toggleMenu}>
+          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
+
+        <div className="header_right">
+          <ul>
+            <li>
+              <SearchIcon Size={35} />
+            </li>
+            <li>
+              <NotificationsNoneIcon />
+            </li>
+            <li>
+              <AccountBoxIcon />
+            </li>
+            <li>
+              <ArrowDropDownIcon />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default Header2;

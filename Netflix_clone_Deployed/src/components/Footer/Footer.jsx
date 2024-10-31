@@ -1,13 +1,22 @@
+import React from "react";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import "./Footer.css";
 
 function Footer() {
   return (
     <>
-      <footer className="footer container">
+      <footer className="footer footer_container">
         <section className="footer__ask">
-          <div className="ps-4">
-            <a href="#">Question? Contact us.</a>
+          {/*<div className="ps-4">*/}
+          <a href="#">Question? Contact us.</a>
+          <div className="footer_icons">
+            <FacebookOutlinedIcon />
+            <InstagramIcon />
+            <YouTubeIcon />
           </div>
+          {/*</div>*/}
         </section>
         <section className="footer__content grid grid__1x4">
           <ul className="footer__list">
